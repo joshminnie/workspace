@@ -1,0 +1,7 @@
+.env
+*.env
+!*.sample.env
+
+# Keep data folders in the repository, but not the contents
+**/data/*
+!**/data/.gitkeep

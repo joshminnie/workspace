@@ -1,0 +1,18 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    paint (2.2.1)
+    thor (1.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  paint
+  thor
+
+RUBY VERSION
+   ruby 2.7.1p83
+
+BUNDLED WITH
+   2.1.4

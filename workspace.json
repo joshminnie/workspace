@@ -1,0 +1,9 @@
+{
+  "network": "labyrinth",
+
+  "services": {
+    "mysql57": {
+      "environments": [".network.env", ".mysql.env"]
+    }
+  }
+}
