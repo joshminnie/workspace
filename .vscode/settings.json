@@ -1,0 +1,35 @@
+{
+  // Tree view
+  "files.exclude": {
+    "**/.bundle": true,
+    "**/log": true,
+    "**/tmp": true,
+    "**/vendor/cache": true
+  },
+
+  "search.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/log": true,
+    "**/tmp": true,
+    "**/vendor/cache": true
+  },
+
+  // Soft 2-space tabs
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+
+  // Trailing whitespace
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  // Line length identification
+  "editor.wordWrapColumn": 131,
+  "editor.rulers": [131],
+  "workbench.colorCustomizations": {
+    "editorRuler.foreground": "#3e4041",
+  },
+}

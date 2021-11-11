@@ -2,74 +2,44 @@
 
 require 'thor'
 require 'json'
+require File.expand_path('lib/workspace', __dir__)
 
-class Workspace < Thor
-  include Thor::Actions
+module Workspace
+  class CLI < Thor
+    include Thor::Actions
+    include Workspace::Docker
 
-  # If the command fails, it will also exit with a code other than zero (0).
-  def self.exit_on_failure?
-    true
-  end
-
-  # Gives the Thor commands a root directory to operate from.
-  def self.source_root
-    File.dirname(__FILE__)
-  end
-
-  desc 'network NAME', 'Create, destroy or clean docker networks'
-  option :create, type: :boolean
-  option :destroy, type: :boolean
-  option :clean, type: :boolean
-  def network
-    name = configuration['network']
-
-    if options[:create]
-      docker("network create #{name}")
-      copy_file('environments/.network.sample.env', 'environments/.network.env') unless File.exists?('environments/.network.env')
-      gsub_file('environments/.network.env', /^(NETWORK_NAME=)(.*)$/i, "\\1#{name}", verbose: true)
-    elsif options[:destroy]
-      docker("network rm #{name}")
-    elsif options[:clean]
-      docker("network prune --force")
-    end
-  end
-
-  desc 'service SERVICE', 'Starts up the specified service'
-  option :build, type: :boolean
-  option :clean, type: :boolean
-  def service(service)
-    service_root = "services/#{service}"
-    environments = configuration.dig('services', service, 'environments')
-    # environments.each do |env|
-    #   copy_file("environments/#{env}", "#{service_root}/#{env}")
-    # end
-    create_file("#{service_root}/.env")
-    environments.each do |env|
-      append_file("#{service_root}/.env", File.read("environments/#{env}"))
+    # If the command fails, it will also exit with a code other than zero (0).
+    def self.exit_on_failure?
+      true
     end
 
-    if options[:clean]
-      if ask("Are you sure you want to remove all data for this container?")
-        remove_dir("#{service_root}/data")
-        empty_directory("#{service_root}/data")
-        create_file("#{service_root}/data/.gitkeep")
+    # Gives the Thor commands a root directory to operate from.
+    def self.source_root
+      File.dirname(__FILE__)
+    end
+
+    desc 'network NAME', 'Create, destroy or clean docker networks'
+    option :create, type: :boolean
+    option :destroy, type: :boolean
+    option :clean, type: :boolean
+    def network
+      name = Workspace.configuration.network
+
+      if options[:create]
+        docker("network create #{name}")
+        copy_file('environments/.network.sample.env', 'environments/.network.env') unless File.exists?('environments/.network.env')
+        gsub_file('environments/.network.env', /^(NETWORK_NAME=)(.*)$/i, "\\1#{name}", verbose: true)
+      elsif options[:destroy]
+        docker("network rm #{name}")
+      elsif options[:clean]
+        docker("network prune --force")
       end
     end
 
-    docker("compose --file #{service_root}/docker-compose.yml up #{options[:build] ? '--build' : nil}")
-  end
-
-  no_commands do
-    def docker(command)
-      say_status('docker', command)
-      system("docker #{command}")
-    end
-
-    def configuration
-      raise ArgumentError, 'configuration file, workspace.json, does not exist' unless File.exists?('./workspace.json')
-      ::JSON.parse(File.read('./workspace.json'))
-    end
+    desc 'service', 'Manage service containers'
+    subcommand "service", Workspace::Commands::Service
   end
 end
 
-Workspace.start
+Workspace::CLI.start
