@@ -6,8 +6,8 @@
 
 Run our included install script and you will be up and running.
 
-```shell
-$> ./install.shell
+```
+$> ./install.sh
 ```
 
 ## Using Workspace
