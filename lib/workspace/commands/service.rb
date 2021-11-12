@@ -32,16 +32,22 @@ module Workspace
         end
       end
 
+      # Starts up the specified service.
+      # @example Start the mysql57 service container
+      #   workspace service start mysql57
       desc 'start SERVICE', 'Starts up the specified service'
       option :build, type: :boolean
-      option :detach, :type => :boolean, :aliases => :d, desc: 'Detach from the container after start up'
+      option :detach, type: :boolean, aliases: :d, desc: 'Detach from the container after start up'
       def start(service)
         root = service_root(service)
-        environments = Workspace.configuration.services.dig(service, 'environments') || []
 
-        create_file("#{root}/.env")
-        environments.each do |env|
-          append_file("#{root}/.env", File.read("environments/#{env}"))
+        if !File.exists?("#{root}/.env") || options[:build]
+          environments = Workspace.configuration.services.dig(service, 'environments') || []
+
+          create_file("#{root}/.env")
+          environments.each do |env|
+            append_file("#{root}/.env", File.read("environments/#{env}"))
+          end
         end
 
         docker("compose --file #{root}/docker-compose.yml up #{options[:detach] ? '-d' : nil} #{options[:build] ? '--build' : nil}")
