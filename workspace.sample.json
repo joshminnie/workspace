@@ -4,6 +4,9 @@
   "services": {
     "mysql57": {
       "environments": [".network.env", ".mysql.env"]
+    },
+    "mysql80": {
+      "environments": [".network.env", ".mysql.env"]
     }
   }
 }

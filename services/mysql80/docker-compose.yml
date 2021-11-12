@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  mysql80:
+    container_name: mysql80
+    build: "./"
+    platform: "linux/x86_64"
+    networks:
+      - default
+    ports:
+      - '${MYSQL_PORT}:3306'
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: ${MYSQL_ALLOW_EMPTY_PASSWORD}
+    restart: unless-stopped
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}
