@@ -4,10 +4,10 @@
 
 ## Setup
 
-Run our included install script and you will be up and running.
+Run our included bootstrap script and you will be up and running.
 
 ```
-$> ./install.sh
+$> script/bootstrap
 ```
 
 ## Using Workspace
