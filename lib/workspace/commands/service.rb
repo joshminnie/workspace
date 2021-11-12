@@ -34,7 +34,7 @@ module Workspace
 
       desc 'start SERVICE', 'Starts up the specified service'
       option :build, type: :boolean
-      option :detach, :type => :boolean, :aliases => :d, desc: 'provide documentation here'
+      option :detach, :type => :boolean, :aliases => :d, desc: 'Detach from the container after start up'
       def start(service)
         root = service_root(service)
         environments = Workspace.configuration.services.dig(service, 'environments') || []
@@ -44,7 +44,7 @@ module Workspace
           append_file("#{root}/.env", File.read("environments/#{env}"))
         end
 
-        docker("compose --file #{root}/docker-compose.yml up #{options[:d] ? '-d' : nil} #{options[:build] ? '--build' : nil}")
+        docker("compose --file #{root}/docker-compose.yml up #{options[:detach] ? '-d' : nil} #{options[:build] ? '--build' : nil}")
       end
 
       desc 'clean SERVICE', 'Cleans the service container back to defaults'
