@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  <%= config[:service] %>:
+    container_name: <%= config[:service] %>
+    build: "./"
+    <%- if config[:platform] -%>
+    platform: "<%= config[:platform] %>"
+    <%- end -%>
+    networks:
+      - default
+    restart: unless-stopped
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}
