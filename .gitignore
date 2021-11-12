@@ -12,3 +12,4 @@ workspace.json
 services/*
 # BEGIN allowlisting services
 !services/mysql57
+!services/mysql80
