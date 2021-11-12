@@ -34,7 +34,7 @@ module Workspace
 
       desc 'start SERVICE', 'Starts up the specified service'
       option :build, type: :boolean
-      option :d, type: :boolean
+      option :detach, :type => :boolean, :aliases => :d, desc: 'provide documentation here'
       def start(service)
         root = service_root(service)
         environments = Workspace.configuration.services.dig(service, 'environments') || []
