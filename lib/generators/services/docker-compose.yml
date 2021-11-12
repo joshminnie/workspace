@@ -4,7 +4,9 @@ services:
   <%= config[:service] %>:
     container_name: <%= config[:service] %>
     build: "./"
-    platform: "linux/x86_64"
+    <%- if config[:platform] -%>
+    platform: "<%= config[:platform] %>"
+    <%- end -%>
     networks:
       - default
     restart: unless-stopped

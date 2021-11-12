@@ -11,6 +11,7 @@ module Workspace
 
       desc 'new SERVICE', 'Create a new service from template'
       option :image, type: :string, required: true, aliases: :i, desc: 'base image for the container'
+      option :platform, type: :string, aliases: :p, desc: 'platform for the container'
       option :ignore, type: :boolean, desc: 'ignore this new service; do not include it as tracked files'
       def new(service)
         root = service_root(service)
@@ -19,7 +20,9 @@ module Workspace
         empty_directory("#{root}/data")
         create_file("#{root}/data/.gitkeep")
         template('lib/generators/services/Dockerfile', "#{root}/Dockerfile", image: options[:image])
-        template('lib/generators/services/docker-compose.yml', "#{root}/docker-compose.yml", service: service)
+        props = { service: service }
+        props.merge!(platform: options[:platform]) if options[:platform]
+        template('lib/generators/services/docker-compose.yml', "#{root}/docker-compose.yml", **props)
         copy_file('lib/generators/services/.dockerignore', "#{root}/.dockerignore")
         insert_into_file('workspace.json', "\n    \"#{service}\": { \"environments\": [] },", after: '"services": {')
 
