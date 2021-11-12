@@ -1,7 +1,14 @@
+# Ignore configuration files
 .env
 *.env
 !*.sample.env
+workspace.json
 
 # Keep data folders in the repository, but not the contents
 **/data/*
 !**/data/.gitkeep
+
+# Ignore all services unless specifically allowlisted
+services/*
+# BEGIN allowlisting services
+!services/mysql57
