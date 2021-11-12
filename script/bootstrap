@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Add the current working directory to the path
+touch $HOME/.profile
+echo "export PATH=\"\$PATH:${PWD}\"" >> $HOME/.profile
+. $HOME/.profile
+
+# Install bundler if needed and then install the bundle.
+gem install bundler --conservative
+bundle install
+
+# Setting the environment up with initial defaults
+cp workspace.sample.json workspace.json
