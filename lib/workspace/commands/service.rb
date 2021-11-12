@@ -59,6 +59,12 @@ module Workspace
         create_file("#{root}/data/.gitkeep")
       end
 
+      desc 'stop SERVICE', 'Stops a running service'
+      def stop(service)
+        root = service_root(service)
+        docker("compose --file #{root}/docker-compose.yml down")
+      end
+
       no_commands do
         # Gets the path to the root directory of the specified service.
         # @param service [String] The service identifier.
