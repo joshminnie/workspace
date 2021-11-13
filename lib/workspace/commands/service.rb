@@ -44,9 +44,8 @@ module Workspace
         if !File.exists?("#{root}/.env") || options[:build]
           environments = Workspace.configuration.services.dig(service, 'environments') || []
 
-          create_file("#{root}/.env")
-          environments.each do |env|
-            append_file("#{root}/.env", File.read("environments/#{env}"))
+          create_file("#{root}/.env") do
+            environments.map { |env| "# #{env}\n#{File.read("environments/#{env}")}\n" }.join('')
           end
         end
 
