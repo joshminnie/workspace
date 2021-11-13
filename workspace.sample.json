@@ -7,6 +7,9 @@
     },
     "mysql80": {
       "environments": [".network.env", ".mysql.env"]
+    },
+    "ruby30": {
+      "environments": [".network.env"]
     }
   }
 }
