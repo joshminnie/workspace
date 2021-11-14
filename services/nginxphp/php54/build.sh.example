@@ -1,0 +1,4 @@
+#! /bin/bash
+
+# This script is for installing additional PHP extensions for the PHP 5.4 container. See https://hub.docker.com/_/php for more
+# details (Search on page for "How to install more PHP extensions")

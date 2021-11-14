@@ -1,0 +1,72 @@
+version: "3.9"
+
+services:
+  nginxphp:
+    container_name: nginxphp
+    build: "./"
+    networks:
+      - default
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ${WEBROOT}:/webroot:ro
+  nginxphp80:
+    container_name: 'nginxphp80'
+    build: './php80'
+    volumes:
+      - '${WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginxphp74:
+    container_name: 'nginxphp74'
+    build: './php74'
+    volumes:
+      - '${WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginxphp73:
+    container_name: 'nginxphp73'
+    build: './php73'
+    volumes:
+      - '${WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginxphp72:
+    container_name: 'nginxphp72'
+    build: './php72'
+    volumes:
+      - '${WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginxphp71:
+    container_name: 'nginxphp71'
+    build: './php71'
+    volumes:
+      - '${WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginxphp70:
+    container_name: 'nginxphp70'
+    build: './php70'
+    volumes:
+      - '${WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginxphp56:
+    container_name: 'nginxphp56'
+    build: './php56'
+    volumes:
+      - '${WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginxphp55:
+    container_name: 'nginxphp55'
+    build: './php55'
+    volumes:
+      - '${WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginxphp54:
+    container_name: 'nginxphp54'
+    build: './php54'
+    volumes:
+      - '${WEBROOT}:/webroot'
+    restart: unless-stopped
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}
