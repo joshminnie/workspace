@@ -13,6 +13,10 @@ services/*
 # BEGIN allowlisting services
 !services/rabbitmq
 !services/dnsmasq
+!services/mariadb107
+!services/mariadb106
+!services/mariadb105
+!services/mariadb104
 !services/mysql57
 !services/mysql80
 !services/ruby30

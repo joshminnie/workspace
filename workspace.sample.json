@@ -8,6 +8,10 @@
     "dnsmasq": {
       "environments": [".network.env"]
     },
+    "mariadb107": { "environments": [".network.env", ".mariadb107.env"] },
+    "mariadb106": { "environments": [".network.env", ".mariadb106.env"] },
+    "mariadb105": { "environments": [".network.env", ".mariadb105.env"] },
+    "mariadb104": { "environments": [".network.env", ".mariadb104.env"] },
     "mysql57": {
       "environments": [".network.env", ".mysql.env"]
     },
