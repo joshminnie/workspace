@@ -2,6 +2,9 @@
   "network": "labyrinth",
 
   "services": {
+    "rabbitmq": {
+      "environments": [".network.env", ".rabbitmq.env"]
+    },
     "mysql57": {
       "environments": [".network.env", ".mysql.env"]
     },
