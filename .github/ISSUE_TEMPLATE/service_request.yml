@@ -1,0 +1,34 @@
+name: Add Service Request
+description: A request that a particular service be added to the project
+labels: [service-request, triage]
+title: "[Service Request]"
+body:
+  - type: input
+    attributes:
+      label: Name of Software
+      description: What exactly do you want added?
+      id: software
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Version(s)
+      description: What version(s) are you requesting?
+      id: versions
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Dockerhub Link
+      description: Link to Dockerhub. Having a link to Dockerhub will greatly improve the chances of your service being added.
+      id: dockerhub
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Other Details
+      id: details
+      description: |
+        Any other details you would like to attach to this request
+    validations:
+      required: false
