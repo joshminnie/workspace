@@ -5,6 +5,9 @@
     "rabbitmq": {
       "environments": [".network.env", ".rabbitmq.env"]
     },
+    "dnsmasq": {
+      "environments": [".network.env"]
+    },
     "mysql57": {
       "environments": [".network.env", ".mysql.env"]
     },

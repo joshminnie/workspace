@@ -12,6 +12,7 @@ workspace.json
 services/*
 # BEGIN allowlisting services
 !services/rabbitmq
+!services/dnsmasq
 !services/mysql57
 !services/mysql80
 !services/ruby30
