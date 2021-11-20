@@ -2,6 +2,9 @@
   "network": "labyrinth",
 
   "services": {
+    "dnsmasq": {
+      "environments": [".network.env"]
+    },
     "mysql57": {
       "environments": [".network.env", ".mysql.env"]
     },
