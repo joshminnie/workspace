@@ -11,6 +11,7 @@ workspace.json
 # Ignore all services unless specifically allowlisted
 services/*
 # BEGIN allowlisting services
+!services/rabbitmq
 !services/dnsmasq
 !services/mysql57
 !services/mysql80

@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    build: "./"
+    networks:
+      - default
+    restart: unless-stopped
+    volumes:
+      - ./data/db:/var/lib/rabbitmq
+    ports:
+      - "${RABBITMQ_MANAGEMENT_PORT}:15672"
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}
