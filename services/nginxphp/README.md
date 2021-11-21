@@ -23,7 +23,8 @@ with no sites configured)
 
 Note: Properly configuring nginx is outside the scope of this document, but here is a hint for setting up a site:
 
-```server {
+```
+server {
     listen 80;
 
     root /webroot/tools/phpinfo;
