@@ -12,6 +12,7 @@
     "dnsmasq": {
       "environments": [".network.env"]
     },
+    "nginxphp": { "environments": [".network.env", ".webroot.env"] },
     "mysql57": {
       "environments": [".network.env", ".mysql.env"]
     },

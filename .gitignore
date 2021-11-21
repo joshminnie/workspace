@@ -17,6 +17,7 @@ services/*
 !services/mariadb106
 !services/mariadb105
 !services/mariadb104
+!services/nginxphp
 !services/mysql57
 !services/mysql80
 !services/ruby30
