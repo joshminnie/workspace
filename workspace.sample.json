@@ -2,6 +2,7 @@
   "network": "labyrinth",
 
   "services": {
+    "phpmyadmin": { "environments": [".network.env", ".phpmyadmin.env"] },
     "mariadb107": { "environments": [".network.env", ".mariadb.env"] },
     "mariadb106": { "environments": [".network.env", ".mariadb.env"] },
     "mariadb105": { "environments": [".network.env", ".mariadb.env"] },
