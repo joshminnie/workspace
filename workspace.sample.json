@@ -2,6 +2,10 @@
   "network": "labyrinth",
 
   "services": {
+    "elasticsearch7142": { "environments": [".network.env", ".elasticsearch.env"] },
+    "mongo50": { "environments": [".network.env", ".mongo.env"] },
+    "redis62": { "environments": [".network.env", ".redis.env"] },
+    "phpmyadmin": { "environments": [".network.env", ".phpmyadmin.env"] },
     "mariadb107": { "environments": [".network.env", ".mariadb.env"] },
     "mariadb106": { "environments": [".network.env", ".mariadb.env"] },
     "mariadb105": { "environments": [".network.env", ".mariadb.env"] },

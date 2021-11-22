@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  phpmyadmin:
+    container_name: phpmyadmin
+    build: "./"
+    networks:
+      - default
+    ports:
+      - ${PHPMYADMIN_PORT}:80
+    environment:
+      - PMA_ARBITRARY=1
+    restart: unless-stopped
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}

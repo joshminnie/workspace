@@ -11,6 +11,10 @@ workspace.json
 # Ignore all services unless specifically allowlisted
 services/*
 # BEGIN allowlisting services
+!services/elasticsearch7142
+!services/mongo50
+!services/redis62
+!services/phpmyadmin
 !services/rabbitmq
 !services/dnsmasq
 !services/mariadb107

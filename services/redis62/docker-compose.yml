@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  redis62:
+    container_name: redis62
+    build: "./"
+    networks:
+      - default
+    restart: unless-stopped
+    ports:
+      - ${REDIS_PORT}:6379
+    volumes:
+      - ./data:/data
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}
