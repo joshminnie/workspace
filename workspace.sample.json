@@ -2,6 +2,7 @@
   "network": "labyrinth",
 
   "services": {
+    "mongo50": { "environments": [".network.env", ".mongo.env"] },
     "redis62": { "environments": [".network.env", ".redis.env"] },
     "phpmyadmin": { "environments": [".network.env", ".phpmyadmin.env"] },
     "mariadb107": { "environments": [".network.env", ".mariadb.env"] },
