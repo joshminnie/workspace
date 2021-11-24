@@ -11,6 +11,15 @@ workspace.json
 # Ignore all services unless specifically allowlisted
 services/*
 # BEGIN allowlisting services
+!services/php54
+!services/php55
+!services/php56
+!services/php57
+!services/php70
+!services/php71
+!services/php72
+!services/php73
+!services/php74
 !services/php80
 !services/elasticsearch7142
 !services/mongo50

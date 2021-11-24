@@ -2,6 +2,14 @@
   "network": "labyrinth",
 
   "services": {
+    "php54": { "environments": [".network.env", ".webroot.env", ".php.env"] },
+    "php55": { "environments": [".network.env", ".webroot.env", ".php.env"] },
+    "php56": { "environments": [".network.env", ".webroot.env", ".php.env"] },
+    "php70": { "environments": [".network.env", ".webroot.env", ".php.env"] },
+    "php71": { "environments": [".network.env", ".webroot.env", ".php.env"] },
+    "php72": { "environments": [".network.env", ".webroot.env", ".php.env"] },
+    "php73": { "environments": [".network.env", ".webroot.env", ".php.env"] },
+    "php74": { "environments": [".network.env", ".webroot.env", ".php.env"] },
     "php80": { "environments": [".network.env", ".webroot.env", ".php.env"] },
     "nginx": { "environments": [".network.env", ".webroot.env"] },
     "elasticsearch7142": { "environments": [".network.env", ".elasticsearch.env"] },
