@@ -70,6 +70,12 @@ module Workspace
         docker("compose --file #{root}/docker-compose.yml down")
       end
 
+      desc 'log SERVICE', 'Views the log output of a running service'
+      def log(service)
+        root = service_root(service)
+        system("( cd #{root} ; docker-compose logs -f)")
+      end
+
       no_commands do
         # Gets the path to the root directory of the specified service.
         # @param service [String] The service identifier.
