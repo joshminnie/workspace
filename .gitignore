@@ -25,3 +25,4 @@ services/*
 !services/mysql57
 !services/mysql80
 !services/ruby30
+!services/nginx

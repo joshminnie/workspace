@@ -2,6 +2,7 @@
   "network": "labyrinth",
 
   "services": {
+    "nginx": { "environments": [".network.env", ".webroot.env"] },
     "elasticsearch7142": { "environments": [".network.env", ".elasticsearch.env"] },
     "mongo50": { "environments": [".network.env", ".mongo.env"] },
     "redis62": { "environments": [".network.env", ".redis.env"] },
