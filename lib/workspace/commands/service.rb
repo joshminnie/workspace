@@ -19,6 +19,8 @@ module Workspace
         empty_directory("#{root}")
         empty_directory("#{root}/data")
         create_file("#{root}/data/.gitkeep")
+        create_file("#{root}/.gitignore")
+        template('lib/generators/services/README.md', "#{root}/README.md", service: service)
         template('lib/generators/services/Dockerfile', "#{root}/Dockerfile", image: options[:image])
         props = { service: service }
         props.merge!(platform: options[:platform]) if options[:platform]
