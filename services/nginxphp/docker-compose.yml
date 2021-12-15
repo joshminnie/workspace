@@ -12,6 +12,12 @@ services:
       - "443:443"
     volumes:
       - ${WEBROOT}:/webroot:ro
+  nginxphp81:
+    container_name: 'nginxphp81'
+    build: './php81'
+    volumes:
+      - '${WEBROOT}:/webroot'
+    restart: unless-stopped
   nginxphp80:
     container_name: 'nginxphp80'
     build: './php80'
