@@ -21,6 +21,7 @@ services/*
 !services/php73
 !services/php74
 !services/php80
+!services/php81
 !services/elasticsearch7142
 !services/mongo50
 !services/redis62
